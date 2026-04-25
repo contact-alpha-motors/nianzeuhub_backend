@@ -14,8 +14,12 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     # Startup: create tables
     logger.info("Creating database tables...")
-    Base.metadata.create_all(bind=engine)
-    logger.info("Database tables created successfully.")
+    try:
+        Base.metadata.create_all(bind=engine)
+        logger.info("Database tables created successfully.")
+    except Exception as e:
+        logger.error(f"Failed to create database tables: {e}")
+        logger.warning("Application will continue to start, but database operations will fail.")
     yield
     # Shutdown
     logger.info("Application shutting down.")
