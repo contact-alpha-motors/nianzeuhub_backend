@@ -1,0 +1,30 @@
+meta {
+  name: Update My Profile
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/talents/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Jean Dupont",
+    "title": "Développeur Full Stack",
+    "location": "Douala, Cameroun",
+    "availability": "Disponible",
+    "experience_level": "Senior",
+    "bio": "Développeur passionné avec 5 ans d'expérience en Python, React et Node.js.",
+    "rate": 50000,
+    "contact_email": "jean@nianzeuhub.com",
+    "contact_whatsapp": "+237690000000",
+    "skills": ["Python", "React", "Node.js", "PostgreSQL", "Docker"]
+  }
+}

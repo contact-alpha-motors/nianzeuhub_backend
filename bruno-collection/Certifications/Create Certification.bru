@@ -1,0 +1,29 @@
+meta {
+  name: Create Certification
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/certifications/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "AWS Solutions Architect Associate",
+    "issuing_organization": "Amazon Web Services",
+    "date_awarded": "2024-06"
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setVar("certificationId", res.body.id);
+  }
+}

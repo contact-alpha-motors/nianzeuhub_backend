@@ -1,0 +1,15 @@
+meta {
+  name: Delete Experience
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/experience/{{experienceId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

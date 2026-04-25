@@ -1,0 +1,24 @@
+meta {
+  name: Login (JSON)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/login/json
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "talent@nianzeuhub.com",
+    "password": "Test1234!"
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setVar("token", res.body.access_token);
+  }
+}

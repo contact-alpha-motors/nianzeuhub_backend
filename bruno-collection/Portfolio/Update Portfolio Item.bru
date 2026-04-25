@@ -1,0 +1,22 @@
+meta {
+  name: Update Portfolio Item
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/portfolio/{{portfolioId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Site E-commerce V2 (Mis à jour)",
+    "description": "Version améliorée avec paiement mobile intégré"
+  }
+}

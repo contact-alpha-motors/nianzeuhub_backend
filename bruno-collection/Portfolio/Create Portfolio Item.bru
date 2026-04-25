@@ -1,0 +1,31 @@
+meta {
+  name: Create Portfolio Item
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/portfolio/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "type": "image",
+    "title": "Site E-commerce",
+    "description": "Un site e-commerce responsive pour une boutique de vêtements",
+    "url": "https://placehold.co/600x400",
+    "thumbnail_url": "https://placehold.co/200x150"
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setVar("portfolioId", res.body.id);
+  }
+}

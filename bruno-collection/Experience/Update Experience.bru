@@ -1,0 +1,22 @@
+meta {
+  name: Update Experience
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/experience/{{experienceId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Lead Développeur Backend",
+    "description": "Promotion au poste de lead, supervision d'une équipe de 4 développeurs."
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Delete Certification
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/certifications/{{certificationId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

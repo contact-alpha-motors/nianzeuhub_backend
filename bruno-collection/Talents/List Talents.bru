@@ -1,0 +1,17 @@
+meta {
+  name: List Talents
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/talents/
+  body: none
+  auth: none
+}
+
+params:query {
+  ~keyword: developer
+  ~domain: python
+  ~level: senior
+}

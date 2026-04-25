@@ -1,0 +1,22 @@
+meta {
+  name: Update Certification
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/certifications/{{certificationId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "AWS Solutions Architect Professional",
+    "date_awarded": "2025-01"
+  }
+}

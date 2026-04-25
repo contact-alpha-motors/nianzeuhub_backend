@@ -1,0 +1,31 @@
+meta {
+  name: Create Experience
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/experience/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Développeur Backend Senior",
+    "company": "Tech Solutions Cameroun",
+    "start_date": "2022-01",
+    "end_date": "2025-04",
+    "description": "Développement d'APIs REST avec FastAPI, gestion de bases de données PostgreSQL, déploiement Docker/Kubernetes."
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setVar("experienceId", res.body.id);
+  }
+}
