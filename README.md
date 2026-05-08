@@ -1,5 +1,10 @@
-# Firebase Studio
+# Nianzeuhub Backend
 
-This is a NextJS starter in Firebase Studio.
+This repository contains the backend for the Nianzeuhub project.
 
-To get started, take a look at src/app/page.tsx.
+## Technologies Used
+- FastAPI
+- PostgreSQL
+
+## Getting Started
+See the `backend/` directory for the backend source code and `backend/README.md` (if available) for more details.
