@@ -9,7 +9,8 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/nianzeuhub"
+    DATABASE_URL_LOCAL: str = "postgresql://postgres:postgres@localhost:5432/nianzeuhub"
+    DATABASE_URL: str = "postgresql://admin:ZWfFGlEFVDhUU7S2BCnCQM1aHkzOjEzi@dpg-d8mit7urnols73cmhgrg-a/nianzeuhub"
     
     # Frontend URL for CORS (set on Railway as env var)
     FRONTEND_URL: str = "http://localhost:3000"
