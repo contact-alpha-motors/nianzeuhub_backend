@@ -1,3 +1,4 @@
+import traceback
 from typing import Generator
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -25,10 +26,17 @@ def get_current_user(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Could not validate credentials",
         )
-    user = db.query(User).filter(User.email == token_data.email).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    return user
+    try:
+        user = db.query(User).filter(User.email == token_data.email).first()
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        return user
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"[DEPS/GET_CURRENT_USER ERROR] {type(e).__name__}: {e}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to get current user: {e}")
 
 def get_current_active_user(
     current_user: User = Depends(get_current_user),
